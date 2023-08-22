@@ -1,0 +1,114 @@
+<!-- {% extends 'header-footer.html' %} -->
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Klinik - Clinic Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+   
+</head>
+
+<body>
+    <div class="container-fluid" >
+        <div class="content">
+
+            <div class="mb-9">
+                
+                <div class="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-white border-top border-bottom border-200 position-relative top-1">
+                    <div class="table-responsive scrollbar mx-n1 px-1">
+                        <table class="table fs--1 mb-0">
+                            <thead>
+                                <tr style="background-color: beige;">
+                                    <th class="white-space-nowrap fs--1 align-middle ps-0"
+                                        style="max-width:20px; width:18px;" scope="col"
+                                        style="width:350px;" data-sort="display-image"> 
+                                        </th>
+                                    <th class="sort white-space-nowrap align-middle fs--2" scope="col"
+                                        style="width:70px;">Image</th>
+                                    <th class="sort white-space-nowrap align-middle ps-4" scope="col"
+                                        style="width:350px;" data-sort="product-name">Doctor NAME</th>
+                                    <th class="sort align-middle text-end ps-4" scope="col" data-sort="regular-price"
+                                        style="width:150px;">Qualification</th>
+                                    <th class="sort align-middle text-end ps-4" scope="col" data-sort="sale-price"
+                                        style="width:150px;">Speciality</th>    
+                                    <th class="sort align-middle text-center ps-4" scope="col" data-sort="category"
+                                        style="width:150px;">MOBILE</th>
+                                    <th class="sort align-middle ps-3" scope="col" data-sort="tags"
+                                        style="width:250px;">EMAIL</th>
+                                    <th class="sort align-middle ps-4" scope="col" data-sort="type"
+                                        style="width:200px;">Date-Time</th>
+                                    <th class="sort align-middle ps-4" scope="col" data-sort="type"
+                                        style="width:200px;">Appointment Date-Time</th>    
+                                    <th class="sort align-middle ps-4" scope="col" data-sort="time"
+                                        style="width:200px;">CONFIRMATION</th>
+                                    
+                                    <th class="sort text-end align-middle pe-0 ps-4" scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody class="list" id="products-table-body">
+                                {% for i in appointments %}
+                                <!-- Loop For Displaying Products -->
+                                <tr class="position-static" >
+                                    <td class="align-middle white-space-nowrap py-0">
+                                        <a class="d-block border rounded-2"
+                                            href="../../../apps/e-commerce/landing/product-details.html">
+                                            
+                                        </a>
+                                    </td>
+                                    <td class="product-name align-start ps-4">
+                                            <img src="{{i.Doctor.profile_pic.url}}" alt width="63" />
+                                      
+                                    </td>
+                                    <td class="price align-middle white-space-nowrap text-start fw-bold text-700 ps-4">
+                                        {{i.Doctor.name}}
+                                    </td>
+                                    <td class="regular-price align-middle white-space-nowrap text-end fw-bold text-700 ps-4">
+                                        {{i.Doctor.qualification}}
+                                    </td>    
+                                    <td class="sale-price align-middle white-space-nowrap text-end text-600 fs--1 ps-4 fw-semi-bold">
+                                        {{i.Doctor.speciality}}
+                                    </td>
+                                    <td class="category align-middle text-center pb-2 ps-3" style="min-width:225px;">
+                                        {{i.Doctor.mobile}}
+                                    </td>
+                                    <td class="tags align-middle white-space-nowrap fs-0 text-start pb-2 ps-3">
+                                        <p>{{i.Doctor.email}}</p>
+                                    </td>
+                                    <td class="type align-middle white-space-nowrap text-start fw-semi-bold pb-2 ps-4">
+                                        <p>{{i.date_time}}</p>
+                                    </td>
+                                    <td class="time align-middle white-space-nowrap text-600 pb-2 ps-4" style="color: blueviolet;">
+                                        {{i.appointment_date}} {{i.appointment_time}}
+                                    </td>
+                                        <td class="align-middle white-space-nowrap text-start pe-2 ps-4 ">
+                                            {% if i.appointment_request == True %}
+                                                <button type="button" class="btn btn-success">Success</button>
+                                            {% else %}
+                                                <button type="button" class="btn btn-danger">Pending</button>
+                                            {% endif %}
+                                        </td>
+                                    </form>   
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+</body>
+
+</html>
+{% endblock %}

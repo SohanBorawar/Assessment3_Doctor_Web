@@ -1,0 +1,153 @@
+{% extends 'header-footer.html' %}
+{% block content %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Klinik - Clinic Website Template</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="{% static 'img/favicon.ico' %}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&family=Roboto:wght@500;700;900&display=swap" rel="stylesheet"> 
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css' %}" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Appointment Start -->
+    <div class="container-xxl py-5">
+        <div class="container">
+            <div class="row g-5">
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
+                    <p class="d-inline-block border rounded-pill py-1 px-4">Doctor Sign Up</p>
+                    <h1 class="mb-4">Register With Us To Make World Healthy</h1>
+                    <p class="mb-4">Your Hospitals is always looking to make things easier for you. Our aim is to provide our customers with the best medical facilities, constant care, and reliable support. If you would like to get in touch with a doctor from a specific department, would like some specific information about the services we provide, or just have a question for us, please fill up the Form given below and we will get back to you. So Come n Join Us To Make World Healthy</p>
+                    <div class="bg-light rounded d-flex align-items-center p-5 mb-4">
+                        <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-white" style="width: 55px; height: 55px;">
+                            <i class="fa fa-phone-alt text-primary"></i>
+                        </div>
+                        <div class="ms-4">
+                            <p class="mb-2">Call Us Now</p>
+                            <h5 class="mb-0">+012 345 6789</h5>
+                        </div>
+                    </div>
+                    <div class="bg-light rounded d-flex align-items-center p-5">
+                        <div class="d-flex flex-shrink-0 align-items-center justify-content-center rounded-circle bg-white" style="width: 55px; height: 55px;">
+                            <i class="fa fa-envelope-open text-primary"></i>
+                        </div>
+                        <div class="ms-4">
+                            <p class="mb-2">Mail Us Now</p>
+                            <h5 class="mb-0">info@example.com</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.5s">
+                    {% if succ_msg %}
+        <div class="alert alert-success d-flex align-items-center" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
+                <use xlink:href="#check-circle-fill" />
+            </svg>
+            <div>
+                <h5>{{succ_msg}}</h5>
+            </div>
+        </div>
+        {% elif err_msg %}
+        <div class="alert alert-danger d-flex align-items-center" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:">
+                <use xlink:href="#exclamation-triangle-fill" />
+            </svg>
+            <div>
+                <h5>{{err_msg}}</h5>
+            </div>
+        </div>
+        {% elif info_msg %}
+        <div class="alert alert-primary d-flex align-items-center" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:">
+                <use xlink:href="#info-fill" />
+            </svg>
+            <div>
+                <h5>{{info_msg}}</h5>
+            </div>
+        </div>
+        {% endif %}
+                    <div class="bg-light rounded h-100 d-flex align-items-center p-5">
+                        
+                        <form action="{% url 'doctor-signup' %}" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="row g-3">
+                                <div class="col-12 col-sm-6">
+                                    <input type="file" class="form-control border-0" name="profile_pic" style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-12">
+                                    <input type="text" class="form-control border-0" name="name" placeholder="Your Name" style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-12">
+                                    <input type="text" class="form-control border-0" name="qualification" placeholder="Your qualification" style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-12">
+                                    <input type="text" class="form-control border-0" name="speciality" placeholder="Your speciality" style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-12">
+                                    <input type="email" class="form-control border-0" name="email" placeholder="Your Email" style="height: 55px;">
+                                </div>
+                                <div class="col-12 col-sm-12">
+                                    <input type="text" class="form-control border-0" name="mobile" placeholder="Your Mobile" style="height: 55px;">
+                                </div>
+                                
+                                <div class="col-12 col-sm-12">
+                                    <select class="form-select border-0" style="height: 55px;" name="gender">
+                                        <option selected>Choose Gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                    </select>
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                        <input type="password" name="password"
+                                        class="form-control border-0" 
+                                            placeholder="Password" style="height: 55px;">
+                                   
+                                </div>
+                                <div class="col-12 col-sm-6">
+                                        <input type="password" name="cpassword"
+                                        class="form-control border-0" 
+                                            placeholder="Confirm Password"  style="height: 55px;">
+                                
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100 py-3" type="submit">Sign Up</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Appointment End -->
+
+</body>
+
+</html>
+{% endblock %}
